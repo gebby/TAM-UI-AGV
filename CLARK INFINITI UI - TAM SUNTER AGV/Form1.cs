@@ -285,33 +285,7 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                             jobFinish2 = true;
                             saveJobNumber2 = 0;
                             Disini("287", "", "");
-                            //    btnStation2.ActiveFillColor = Color.LimeGreen;
-                            //    btnStation2.IdleFillColor = Color.LimeGreen;
-                            //    btnStation2.ButtonText = "LINE 2";
-                            //    cntCall2 = 0; 
                         }
-                        //else if (cntCall1 != 0 && jobFinish == true)
-                        //{
-                        //    Disini("b1", "", "");
-                        //    btnStation1.ActiveFillColor = Color.LimeGreen;
-                        //    btnStation1.IdleFillColor = Color.LimeGreen;
-                        //    btnStation1.ButtonText = "LINE 1";
-                        //    //line1 = "GO";
-                        //    cntCall1 = 0; jobFinish = false;
-                        //}
-                        ////else if (cntCall2 != 0 && agvStatus == "STOP")
-                        //else if (cntCall2 != 0 && jobFinish2 == true)
-                        //{
-                        //    Disini("b2", "", "");
-                        //    btnStation2.ActiveFillColor = Color.LimeGreen;
-                        //    btnStation2.IdleFillColor = Color.LimeGreen;
-                        //    btnStation2.ButtonText = "LINE 2";
-                        //    //line2 = "GO";
-                        //    cntCall2 = 0; jobFinish2 = false;
-                        //}
-                        //Console.Write("289 ");
-                        //Console.WriteLine("mId : {0} jobNum : {1} stat : {2}", missionId.ToString(), jobNumber, jobStatus);
-                        //Console.WriteLine("\tl1 : {0} l2 : {1}", line1, line2);
                     }
                     this.gridViewDS.Columns[0].Width = 175;
                     this.gridViewDS.Columns[1].Width = 75;
@@ -641,7 +615,7 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
             }
             else if (dialogResult == DialogResult.No)
             {
-                //do something else
+                
             }
         }
 
@@ -684,5 +658,34 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
         //    else { Console.WriteLine("statusDelivery : {0} ", statusDelivery); discBackground.Visible = false; labelDisconnect.Visible = false; }
         //}
         //else { }
+
+        // VIsual Effect for Button
+        //    btnStation2.ActiveFillColor = Color.LimeGreen;
+        //    btnStation2.IdleFillColor = Color.LimeGreen;
+        //    btnStation2.ButtonText = "LINE 2";
+        //    cntCall2 = 0; 
+
+        //else if (cntCall1 != 0 && jobFinish == true)
+        //{
+        //    Disini("b1", "", "");
+        //    btnStation1.ActiveFillColor = Color.LimeGreen;
+        //    btnStation1.IdleFillColor = Color.LimeGreen;
+        //    btnStation1.ButtonText = "LINE 1";
+        //    //line1 = "GO";
+        //    cntCall1 = 0; jobFinish = false;
+        //}
+        ////else if (cntCall2 != 0 && agvStatus == "STOP")
+        //else if (cntCall2 != 0 && jobFinish2 == true)
+        //{
+        //    Disini("b2", "", "");
+        //    btnStation2.ActiveFillColor = Color.LimeGreen;
+        //    btnStation2.IdleFillColor = Color.LimeGreen;
+        //    btnStation2.ButtonText = "LINE 2";
+        //    //line2 = "GO";
+        //    cntCall2 = 0; jobFinish2 = false;
+        //}
+        //Console.Write("289 ");
+        //Console.WriteLine("mId : {0} jobNum : {1} stat : {2}", missionId.ToString(), jobNumber, jobStatus);
+        //Console.WriteLine("\tl1 : {0} l2 : {1}", line1, line2);
     }
 }
