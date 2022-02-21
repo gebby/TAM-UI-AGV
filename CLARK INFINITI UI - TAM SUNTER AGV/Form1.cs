@@ -291,7 +291,7 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                         //Console.WriteLine(saveJobNumber2);
                     }
                     Console.WriteLine("283 Btn1: {0} - cnt1: {1} - jobF1: {2} - Job: {3} - sJob: {4} ", data.msg[0][1], cntCall1, jobStatus, data.msg[1][0], saveJobNumber1);
-                    //Console.WriteLine("283 Btn1: {0} - cnt1: {1} - jobF1: {2} - Job: {3} - sJob: {4} ", data.msg[0][1], cntCall2, jobStatus, data.msg[1][0], saveJobNumber2);
+                    Console.WriteLine("283 Btn1: {0} - cnt1: {1} - jobF1: {2} - Job: {3} - sJob: {4} ", data.msg[0][1], cntCall2, jobStatus, data.msg[1][0], saveJobNumber2);
                     Console.WriteLine("");
                     if (line1Click == true && cntCall1 != 0 && data.msg[1][0] == saveJobNumber1 && (jobStatus =="FINISH" || jobStatus == "正常结束") && dataRfid ==1)
                     {
@@ -412,66 +412,76 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                             else if (dataStatus == 1) { agv1Status = "PAUSE"; }
                             else if (dataStatus == 2) { agv1Status = "RUN"; }
                             else { agv1Status = "STANDBY"; }
-                            if (dataRute == 101)
+                            if (dataRute == 101 && dataRfid != 9 && cntCall1 != 0)
                             {
                                 btnStation1.ButtonText = "GO TO LINE 1";
                             }
-                            if (dataRute == 101 && dataRfid == 9)
-                            {
-                                btnStation1.ButtonText = "UNLOADING";
-                                btnStation1.ActiveFillColor = Color.Yellow;
-                                btnStation1.IdleFillColor = Color.Yellow;
+                            else if (dataRute == 101 && dataRfid == 9 && cntCall1 != 0)
+                    {
+                                btnStation1.ButtonText = "UNLOADING AREA";
+                                btnStation1.ActiveFillColor = Color.Orange;
+                                btnStation1.IdleFillColor = Color.Orange;
                             }
-                            else if (dataRute == 2)
-                            {
-                                btnStation1.ButtonText = "GO TO EMPTY";
-                                btnStation1.ActiveFillColor = Color.Yellow;
-                                btnStation1.IdleFillColor = Color.Yellow;
-                            }
-                            else if (dataRute == 2 && dataRfid ==10)
-                            {
-                                btnStation1.ButtonText = "EMPTY POST";
-                                btnStation1.ActiveFillColor = Color.Yellow;
-                                btnStation1.IdleFillColor = Color.Yellow;
-                            }
-                            else if ((dataRute == 20) && (dataRfid == 17 || dataRfid == 12))
-                            {
-                                btnStation1.ButtonText = "GO HOME";
-                                btnStation1.ActiveFillColor = Color.Yellow;
-                                btnStation1.IdleFillColor = Color.Yellow;
-                            }
-                            else{ }
-
-                            if (dataRute == 102)
-                            {
-                                btnStation1.ButtonText = "GO TO LINE 2";
-                            }
-                            if (dataRute == 102 && dataRfid == 20)
-                            {
-                                btnStation1.ButtonText = "UNLOADING";
-                                btnStation1.ActiveFillColor = Color.Yellow;
-                                btnStation1.IdleFillColor = Color.Yellow;
-                            }
-                            else if (dataRute == 2)
+                            else if (dataRute == 2 && cntCall1 != 0)
                             {
                                 btnStation1.ButtonText = "GO TO EMPTY";
-                                btnStation1.ActiveFillColor = Color.Yellow;
-                                btnStation1.IdleFillColor = Color.Yellow;
+                                btnStation1.ActiveFillColor = Color.Orange;
+                                btnStation1.IdleFillColor = Color.Orange;
                             }
-                            else if (dataRute == 2 && dataRfid == 10)
+                            else if (dataRute == 2 && dataRfid ==10 && cntCall1 != 0)
                             {
                                 btnStation1.ButtonText = "EMPTY POST";
-                                btnStation1.ActiveFillColor = Color.Yellow;
-                                btnStation1.IdleFillColor = Color.Yellow;
+                                btnStation1.ActiveFillColor = Color.Orange;
+                                btnStation1.IdleFillColor = Color.Orange;
                             }
-                            else if ((dataRute == 20) && (dataRfid == 10 || dataRfid == 17 || dataRfid == 12))
-
+                            else if ((dataRute == 20) && (dataRfid == 17 || dataRfid == 12) && cntCall1 != 0)
                             {
                                 btnStation1.ButtonText = "GO HOME";
-                                btnStation1.ActiveFillColor = Color.Yellow;
-                                btnStation1.IdleFillColor = Color.Yellow;
+                                btnStation1.ActiveFillColor = Color.Orange;
+                                btnStation1.IdleFillColor = Color.Orange;
                             }
-                            else{ }
+                            else
+                            {
+                                //btnStation1.ActiveFillColor = Color.LimeGreen;
+                                //btnStation1.IdleFillColor = Color.LimeGreen;
+                                //btnStation1.ButtonText = "LINE 1";
+                            }
+
+                            if (dataRute == 102 && dataRfid != 20 && cntCall2 != 0)
+                            {
+                                btnStation2.ButtonText = "GO TO LINE 2";
+                            }
+                            if (dataRute == 102 && dataRfid == 20 && cntCall2 != 0)
+                            {
+                                btnStation2.ButtonText = "UNLOADING AREA";
+                                btnStation2.ActiveFillColor = Color.Orange;
+                                btnStation2.IdleFillColor = Color.Orange;
+                            }
+                            else if (dataRute == 2 && cntCall2 != 0)
+                            {
+                                btnStation2.ButtonText = "GO TO EMPTY";
+                                btnStation2.ActiveFillColor = Color.Orange;
+                                btnStation2.IdleFillColor = Color.Orange;
+                            }
+                            else if (dataRute == 2 && dataRfid == 10 && cntCall2 != 0)
+                            {
+                                btnStation2.ButtonText = "EMPTY POST";
+                                btnStation2.ActiveFillColor = Color.Orange;
+                                btnStation2.IdleFillColor = Color.Orange;
+                            }
+                            else if ((dataRute == 20) && (dataRfid == 10 || dataRfid == 17 || dataRfid == 12) && cntCall2 != 0)
+
+                            {
+                                btnStation2.ButtonText = "GO HOME";
+                                btnStation2.ActiveFillColor = Color.Orange;
+                                btnStation2.IdleFillColor = Color.Orange;
+                            }
+                            else 
+                            {
+                                //btnStation2.ActiveFillColor = Color.LimeGreen;
+                                //btnStation2.IdleFillColor = Color.LimeGreen;
+                                //btnStation2.ButtonText = "LINE 2";
+                            }
                             AGVStatusModel temp = new AGVStatusModel(readPower.ToString() + "%", agvName, agvState, agv1Status.ToString());
                             showData.Add(temp);
                         }
