@@ -630,6 +630,9 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
             {
                 InitializeComponent();
                 Control.CheckForIllegalCrossThreadCalls = false;
+                //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                //this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+                this.Size = new Size(1920, 1200);
                 gridViewStatus.Invoke((MethodInvoker)delegate { gridViewDS.DataSource = AGVStatus; });
                 gridViewDS.Invoke((MethodInvoker)delegate { gridViewDS.DataSource = AGVData; });
                 gridViewError.Invoke((MethodInvoker)delegate { gridViewDS.DataSource = AGVError; });

@@ -1945,7 +1945,7 @@
             this.logoTam.BorderRadius = 0;
             this.logoTam.Image = ((System.Drawing.Image)(resources.GetObject("logoTam.Image")));
             this.logoTam.IsCircle = true;
-            this.logoTam.Location = new System.Drawing.Point(31, 10);
+            this.logoTam.Location = new System.Drawing.Point(31, -50);
             this.logoTam.Margin = new System.Windows.Forms.Padding(2);
             this.logoTam.Name = "logoTam";
             this.logoTam.Size = new System.Drawing.Size(77, 77);
@@ -1973,7 +1973,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CLARK AGV - INFINITI CONTROL STATION";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
