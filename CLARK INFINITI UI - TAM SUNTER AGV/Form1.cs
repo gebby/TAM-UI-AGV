@@ -40,7 +40,7 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
         public bool line1Click = false, line2Click = false, testState=false, cancelCall=false;
         public bool c1 = false, c2 = false, cancel1 = false, cancel2 = false, jobFinish = true, jobFinish2 = true;
         private static string m_exePath = string.Empty;
-        public double dataRfid, dataRfid_ = 0, dataRute;
+        public double dataRfid, dataRfid_ = 0, dataRute, cntCancel;
         public string jobStatus, status2, missionName,missionStatus;
         private void cancelButton_Click_1(object sender, EventArgs e)
         {
@@ -56,11 +56,8 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
         {
             Console.WriteLine(tbCancelCall.Text);
             cancelCall = true;
-            tbCancelCall.Clear();
+            cntCancel += 1;
             cancelButton2.ButtonText = "PROCESS";
-            //jobFinish2 = !jobFinish2;
-            //line2Click = false;
-            //saveJobNumber2 = 0;
 
         }
 
@@ -415,6 +412,8 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                             if (dataRute == 101 && dataRfid != 9 && cntCall1 != 0)
                             {
                                 btnStation1.ButtonText = "GO TO LINE 1";
+                                btnStation1.ActiveFillColor = Color.Red;
+                                btnStation1.IdleFillColor = Color.Red;
                             }
                             else if (dataRute == 101 && dataRfid == 9 && cntCall1 != 0)
                     {
@@ -422,19 +421,19 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                                 btnStation1.ActiveFillColor = Color.Orange;
                                 btnStation1.IdleFillColor = Color.Orange;
                             }
-                            else if (dataRute == 2 && cntCall1 != 0)
+                            else if (dataRute == 2 && cntCall1 == 2)
                             {
                                 btnStation1.ButtonText = "GO TO EMPTY";
                                 btnStation1.ActiveFillColor = Color.Orange;
                                 btnStation1.IdleFillColor = Color.Orange;
                             }
-                            else if (dataRute == 2 && dataRfid ==10 && cntCall1 != 0)
+                            else if (dataRute == 2 && dataRfid ==10 && cntCall1 == 2)
                             {
                                 btnStation1.ButtonText = "EMPTY POST";
                                 btnStation1.ActiveFillColor = Color.Orange;
                                 btnStation1.IdleFillColor = Color.Orange;
                             }
-                            else if ((dataRute == 20) && (dataRfid == 17 || dataRfid == 12) && cntCall1 != 0)
+                            else if ((dataRute == 20) && (dataRfid == 17 || dataRfid == 12) && cntCall1 == 2)
                             {
                                 btnStation1.ButtonText = "GO HOME";
                                 btnStation1.ActiveFillColor = Color.Orange;
@@ -450,6 +449,8 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                             if (dataRute == 102 && dataRfid != 20 && cntCall2 != 0)
                             {
                                 btnStation2.ButtonText = "GO TO LINE 2";
+                                btnStation2.ActiveFillColor = Color.Red;
+                                btnStation2.IdleFillColor = Color.Red;
                             }
                             if (dataRute == 102 && dataRfid == 20 && cntCall2 != 0)
                             {
@@ -457,19 +458,19 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                                 btnStation2.ActiveFillColor = Color.Orange;
                                 btnStation2.IdleFillColor = Color.Orange;
                             }
-                            else if (dataRute == 2 && cntCall2 != 0)
+                            else if (dataRute == 2 && cntCall2 == 2)
                             {
                                 btnStation2.ButtonText = "GO TO EMPTY";
                                 btnStation2.ActiveFillColor = Color.Orange;
                                 btnStation2.IdleFillColor = Color.Orange;
                             }
-                            else if (dataRute == 2 && dataRfid == 10 && cntCall2 != 0)
+                            else if (dataRute == 2 && cntCall2 == 2 )
                             {
                                 btnStation2.ButtonText = "EMPTY POST";
                                 btnStation2.ActiveFillColor = Color.Orange;
                                 btnStation2.IdleFillColor = Color.Orange;
                             }
-                            else if ((dataRute == 20) && (dataRfid == 10 || dataRfid == 17 || dataRfid == 12) && cntCall2 != 0)
+                            else if ((dataRute == 20) && (dataRfid == 10 || dataRfid == 17 || dataRfid == 12) && cntCall2 == 2)
 
                             {
                                 btnStation2.ButtonText = "GO HOME";
@@ -504,8 +505,7 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                 dataRfid_ = 1;
                 //if (callStation1 == true && cntCall1 ==1 && testState == false && destLine=="'SMD_01'" && statusDelivery !="FINISH" && dataRfid_ ==1)
                 //if (line1Click == true && cntCall1 == 1 && testState == false && agv1Status == "STOP" && missionId ==56 && jobStatus == "FINISH")
-                if (line1Click == true && cntCall1 ==1 && testState ==false && jobFinish ==true && (lastDelivery== "正常结束" || lastDelivery == "放弃") && lastDelivery != "执行" 
-                    &&(lastCall == "CBOX_1" || lastCall == "CBOX_2") )
+                if (line1Click == true && cntCall1 ==1 && testState ==false && jobFinish ==true && (lastDelivery== "正常结束" || lastDelivery == "放弃") && lastDelivery != "执行" )
                 {
                     Disini("Call API1", destLine, saveJobNumber1.ToString());
                     string stationName = "missionC.netMissionAdd(" + destLine + ")";
@@ -523,8 +523,7 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                     }
                     else { Console.WriteLine("else : {0}", stationName); }
             }
-                if (line2Click == true && cntCall2 == 1 && testState == false && jobFinish2 == true && (lastDelivery == "正常结束" || lastDelivery == "放弃") && lastDelivery != "执行"
-                    && (lastCall == "CBOX_1" || lastCall == "CBOX_2"))
+                if (line2Click == true && cntCall2 == 1 && testState == false && jobFinish2 == true && (lastDelivery == "正常结束" || lastDelivery == "放弃") && lastDelivery != "执行")
                     {
                     Disini("Call API2", destLine, saveJobNumber2.ToString());
                     string stationName = "missionC.netMissionAdd(" + destLine + ")";
@@ -544,17 +543,34 @@ namespace CLARK_INFINITI_UI___TAM_SUNTER_AGV
                     //Console.WriteLine("netMissionAdd ErrorMark : {0}", data.errMark); 
                 }
 
-               //========================================================= CANCEL CALL =========================================================================// --> 7
-                if ((cancelCall == true))
+                //========================================================= CANCEL API =========================================================================// --> 7
+                Console.WriteLine(cntCancel);
+                if ((cancelCall == true) && tbCancelCall.Text !="")
                 {
+                    DialogResult dialogResult = MessageBox.Show("Do you want to cancel Job ?", "SYSTEM", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        string cancelJobid = tbCancelCall.Text;
+                        string cancelApi = "missionC.netMissionCancel(" + cancelJobid + ")";
+                        CallingData dataCancel = await APIcalling(cancelApi);
+                        cancelButton2.ButtonText = "CANCEL";
+                        MessageBox.Show("MISSION " + tbCancelCall.Text + " GIVE UP");
+                        cancelCall = false; tbCancelCall.Clear();
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        cancelCall = false; tbCancelCall.Clear();
+                    }
                     
-                    string cancelJobid = tbCancelCall.Text;
-                    string cancelApi = "missionC.netMissionCancel(" + cancelJobid + ")";
-                    CallingData dataCancel = await APIcalling(cancelApi);
-                    cancelButton2.ButtonText = "CANCEL";
                     //cancelCall = false;
                 }
-                else { cancelCall = false; }
+                else if (cancelCall == true && tbCancelCall.Text == "")
+                {
+                    MessageBox.Show("PLEASE INPUT JOB ID!");
+                    cancelCall = false; tbCancelCall.Clear();
+                    cancelButton2.ButtonText = "CANCEL";
+                }
+                else {   cancelCall = false; cntCancel = 0; }
 
                 //if ((callStation2 == false && cntCall2 == 0))
                 //{
